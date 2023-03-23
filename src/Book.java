@@ -1,4 +1,4 @@
-
+import java.util.Objects;
 
 public class Book implements Comparable<Book> {
     String nameBook;
@@ -37,6 +37,17 @@ public class Book implements Comparable<Book> {
         }
         return nameBook.compareTo(other.nameBook);
 
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Book)) return false;
+        Book book = (Book) o;
+        return nameBook.equals(book.nameBook) && author.equals(book.author);
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(nameBook, author);
     }
 
     @Override
